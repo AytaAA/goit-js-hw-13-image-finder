@@ -36,14 +36,20 @@ function onSearch(e) {
 
 function fetchGallery() {
   loadMoreBtn.disable();
-  newsApiService.fetchGallery().then(articles => {
-    appendGalleryMarkup(articles);
+  newsApiService.fetchGallery().then(gallery => {
+    const y = loadMoreBtn.refs.button.offsetTop;
+    appendGalleryMarkup(gallery);
     loadMoreBtn.enable();
+    window.scrollTo({
+      top: y - 60,
+      left: 0,
+      behavior: 'smooth',
+    });
   });
 }
 
 function appendGalleryMarkup(cards) {
-  galleryContainer.insertAdjacentHTML('beforeend', cardTmpl(cards));
+  galleryContainer.insertAdjacentHTML('beforeend', cardTmpl(cards.hits));
 }
 
 function clearGalleryContainer() {

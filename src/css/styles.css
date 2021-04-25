@@ -68,3 +68,10 @@ img {
   text-decoration: none;
   color: #2a2a2a;
 }
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 8px;
+  flex-grow: 1;
+}
